@@ -19,7 +19,7 @@ export class Command {
 
   exec(...args: unknown[]) {
     try {
-      this.run(args);
+      this.run(...args);
     } catch (error) {
       console.error((error as Error).message);
     }
