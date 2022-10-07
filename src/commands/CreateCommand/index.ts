@@ -24,7 +24,7 @@ export class CreateCommand extends Command {
 
     await remove(join(".", ".git"));
 
-    await updateHash(repo)
+    await updateHash(repo, projectPath)
 
     console.info("Done");
   }

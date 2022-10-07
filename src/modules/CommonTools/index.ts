@@ -10,8 +10,8 @@ export const getLastHash = (repo: string) => {
   return hash;
 };
 
-export const writeHash = async (hash: string) => {
-  const filePath = join(".", Config.HASH_PATH);
+export const writeHash = async (hash: string, root = ".") => {
+  const filePath = join(root, Config.HASH_PATH);
   await ensureFile(filePath);
   await writeFile(filePath, hash);
 };
@@ -25,11 +25,11 @@ export const readHash = async () => {
   return data.toString();
 };
 
-export const updateHash = async (repo: string) => {
+export const updateHash = async (repo: string, root = ".") => {
   const hash = await getLastHash(repo);
 
   if (hash) {
-    await writeHash(hash);
+    await writeHash(hash, root);
   } else {
     throw new Error("Can't get fresh repo commit hash");
   }
