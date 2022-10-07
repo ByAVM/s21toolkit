@@ -18,7 +18,7 @@ export class CreateCommand extends Command {
       throw new Error("Project directory is not empty");
     }
 
-    execSync(`git clone ${repo} ${projectPath}`);
+    execSync(`git clone "${repo}" "${projectPath}"`);
 
     await writeJSON(configPath, Config.create(repo), { spaces: 2 });
 
